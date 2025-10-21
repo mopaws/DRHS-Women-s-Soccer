@@ -1,0 +1,70 @@
+body{
+    background-color:white;
+}
+/*.game{
+background-color:white;
+
+}*/
+#heading{
+    background-color:#06048f;
+    margin-block-start: 0px;
+    margin-block-end:0px;
+    background-color: #06048f !important;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding: 25px;
+
+}
+#space{
+    background-color:#06048f;
+    margin: 0;
+}
+.wrapper {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-gap: 10px;
+    color:black;
+  }
+  .fieldWrapper {
+    display: grid;
+    grid-template-columns: 25% 70%;
+    grid-gap: 10px;
+    color:black;
+  }
+  .fieldWrapper input{
+    color:black !important;
+  }
+  span{
+    color:white;
+  }
+  body{
+    background: linear-gradient(181deg, rgba(199, 245, 255, 1) 20%, rgba(240, 179, 255, 1) 100%);
+  }
+  .fieldWrap{
+    display: grid;
+    grid-template-columns: 100% 100%;
+    grid-gap: 10px;
+    color:black;
+  }
+  .wrap{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 10px;
+    color:black;
+  }
+  input{
+    line-height:200% !important;
+  }
+.line{
+  white-space: pre-wrap;
+}
+.thumb.resized-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 300px; /* Prevents huge images */
+  display: block;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  object-fit: contain; /* Ensures the image stays within bounds */
+}
