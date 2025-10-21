@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Scouting Reports {% endblock %}</h1>
+    {% for enc in scouting_report %}
+        <br>
+        <hr>
+        
+        <div class='report' id="printableDiv">
+            
+            <h3>Team: {{ enc[1] }}</h3>
+            <p class="italics">Style of Play: {{ enc[2] }}</p>
+            <p class="italics">Corners/Set Pieces: {{ enc[3] }}</p>
+            <p class="italics">Players To Watch: {{ enc[4] }}</p>
+            <p class="italics">Goalkeeper: {{ enc[5] }}</p>
+            <p class="italics">Team Notes: {{ enc[6] }}</p>
+            <p class="italics">Roster: {{ enc[7] }}</p>
+            <p class = "italics">Added: {{ enc[8] }}</p>
+            
+
+            <div class="docHolder">
+                {% if enc[9] %}
+                    {% set mimetype = enc[9] %}
+                    {% if mimetype == 'audio/mpeg' %}
+                        {% set media_url = url_for('get_audio', image_id=enc[0]) %}
+                    {% else %}
+                        {% set media_url = url_for('get_image', image_id=enc[0]) %}
+                    {% endif %}
+                    <button onclick="window.open('{{ media_url }}', '_blank')">
+                        {% if mimetype.startswith('image/') %}
+                            View Image
+                        {% elif mimetype == 'application/pdf' %}
+                            View PDF
+                        {% elif mimetype == 'audio/mpeg' %}
+                            Play Audio
+                        {% else %}
+                            View Media
+                        {% endif %}
+                    </button>
+                {% endif %}
+            </div>
+            
+            <br>
+            {% if current_user.isadmin %}
+            <button onclick="return confirm('Are you sure you want to delete this report?')"><a  class = "box" href="{{ url_for('delete', id=enc[0]) }}">Delete a Report</a></button>
+            {% endif %}  
+            <button><a  class = "box" href="{{ url_for('edit', id=enc[0]) }}">Edit a Report</a></button>
+            <button onclick="printDiv(this)">Print this section</button>
+
+        </div>
+    {% endfor %}<hr>
+    <button onclick="printAllReports()">Print all reports</button>
+{% endblock %}
